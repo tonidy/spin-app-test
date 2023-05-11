@@ -21,7 +21,7 @@ namespace SpinGameTest
             if (string.IsNullOrEmpty(connString))
                 throw new ArgumentNullException(nameof(connString));
 
-            var dbName = $"spin_game_test_db_{Guid.NewGuid()}";
+            var dbName = $"spin_game_test_{Guid.NewGuid()}";
 
             this.DbSettings = new MongoDbSettings(connString, dbName);
 
@@ -31,7 +31,7 @@ namespace SpinGameTest
                 {
                     var client = new MongoClient(DbSettings.ConnectionString);
                     var db = client.GetDatabase(DbSettings.DbName);
-                    var spinGameCollection = db.GetCollection<SpinGame>("spingames");
+                    var spinGameCollection = db.GetCollection<SpinGame>("SpinGames");
                     var prizes = new List<Prize>
                     {
                         new Prize

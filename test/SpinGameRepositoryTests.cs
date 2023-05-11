@@ -62,22 +62,22 @@ namespace SpinGameTest
         public void Update_spin_game_should_success()
         {
             var repo = new SpinGameRepository(_fixture.DbSettings);
-            var spinGame = repo.GetByName("Spin Game Test 1");
+            var spinGame = repo.GetByName("Spin Game Test 2");
             Assert.NotNull(spinGame);
 
-            spinGame.Name = "Spin Game 1";
+            spinGame.Name = "Spin Game 2";
             repo.Update(spinGame);
-            var updatedSpinGame = repo.GetByName("Spin Game 1");
+            var updatedSpinGame = repo.GetByName(spinGame.Name);
 
             Assert.NotNull(updatedSpinGame);
-            Assert.Equal("Spin Game 1", updatedSpinGame.Name);
+            Assert.Equal("Spin Game 2", updatedSpinGame.Name);
         }
 
         [Fact]
         public void Delete_spin_game_should_success()
         {
             var repo = new SpinGameRepository(_fixture.DbSettings);
-            var spinGame = repo.GetByName("Spin Game Test 1");
+            var spinGame = repo.GetByName("Spin Game Test 3");
             Assert.NotNull(spinGame);
 
             repo.Delete(spinGame.Id);
