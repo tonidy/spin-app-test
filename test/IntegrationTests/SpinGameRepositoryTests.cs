@@ -1,9 +1,9 @@
-using System;
 using SpinGameApp.Model;
 using SpinGameApp.Repositories;
+using SpinGameTest.Fixtures;
 using Xunit;
 
-namespace SpinGameTest
+namespace SpinGameTest.IntegrationTests
 {
     public class SpinGameRepositoryTests : IClassFixture<DbFixture>
     {
@@ -45,7 +45,7 @@ namespace SpinGameTest
         }
 
         [Fact]
-        public void Get_spin_game_by_id_should_return_correct_result()
+        public void Get_spin_game_by_id_should_return_a_spin_game()
         {
             var repo = new SpinGameRepository(_fixture.DbSettings);
             var spinGame = repo.GetByName("Spin Game Test 1");

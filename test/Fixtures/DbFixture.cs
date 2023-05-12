@@ -3,7 +3,7 @@ using MongoDB.Driver;
 using SpinGameApp;
 using SpinGameApp.Model;
 
-namespace SpinGameTest
+namespace SpinGameTest.Fixtures
 {
     public class DbFixture : IDisposable
     {
@@ -14,7 +14,7 @@ namespace SpinGameTest
         {
             var config = new ConfigurationBuilder()
                .AddJsonFile("appsettings.json", optional: true)
-               .AddJsonFile("appsettings.Development.json", optional: true)
+               .AddJsonFile("appsettings.Integration.json", optional: true)
                .Build();
 
             var connString = config.GetConnectionString("Mongodb");
@@ -42,12 +42,12 @@ namespace SpinGameTest
                         new Prize
                         {
                             Name = "Rare",
-                            Probability = 10
+                            Probability = 75
                         },
                         new Prize
                         {
                             Name = "Epic",
-                            Probability = 30
+                            Probability = 90
                         }
                     };
                     spinGameCollection.InsertMany(

@@ -36,11 +36,11 @@ public class SpinGamesController : ControllerBase
     }
 
     // GET: api/spingames/{id}
-    [HttpGet("{id}")]
-    public IActionResult GetSpinGame(string id)
+    [HttpGet("{id:length(24)}")]
+    public ActionResult<SpinGame> GetSpinGame(string id)
     {
         var spinGame = _spinGameRepo.Get(id);
-        return spinGame == null ? NotFound() : Ok(spinGame);
+        return spinGame == null ? NotFound() : spinGame;
     }
 
     // POST: api/spingames
@@ -56,7 +56,7 @@ public class SpinGamesController : ControllerBase
 
     // POST: api/spingames/spin
     [HttpPost("spin")]
-    public IActionResult Spin(string spinGameId, string playerId)
+    public ActionResult<SpinResult> Spin(string spinGameId, string playerId)
     {
         if (string.IsNullOrEmpty(spinGameId))
             return BadRequest($"{nameof(spinGameId)} is empty");
@@ -103,6 +103,6 @@ public class SpinGamesController : ControllerBase
         spinResult.PrizeResult = prizeResultSequences.First();
         _spinResultRepo.Create(spinResult);
 
-        return Ok(spinResult);
+        return spinResult;
     }
 }

@@ -30,4 +30,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("/", () => "Welcome to Spin Game!");
+
 app.Run();
+
+public partial class Program { }
