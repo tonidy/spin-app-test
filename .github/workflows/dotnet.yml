@@ -34,5 +34,6 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: |
+        sudo chown -R $USER:$USER /home/runneradmin
         cd test
         dotnet test --no-build --verbosity normal
