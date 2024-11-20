@@ -51,3 +51,5 @@
 - [x] A C# implementation of the spin result repository using MongoDB.
 - [x] Test case for each function you make 
 - [x] Create a README file that provides instructions on how to run the script
+
+<!-- trigger -->
