@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
-    - name: Start MongoDB
+    - name: Start MongoDB ${{ matrix.mongodb-version }}
       uses: supercharge/mongodb-github-action@1.11.0
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
